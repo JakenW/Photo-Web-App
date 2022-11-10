@@ -13,3 +13,6 @@ Selected API with a sample~ one record of returned fields and data    https://py
 
 
 Week 1: who is doing what?
+Grayson: API, File Paths 
+Jaken: Pages of Web App 
+Christina: Pages of Web App 

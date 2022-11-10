@@ -1,6 +1,4 @@
 # Photo-Web-App
-Yes.
-
 
 Development stack to be used
 environment info (storage method (filesystem))

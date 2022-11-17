@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- Page for Album Page wip! -->
+
+<html lang="en">
+
+<head>
+<title>egami</title> 
+<link rel="egami icon" href="images/egamilogo.png">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+@import url(w3.css);
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+<html>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+<body>
+<!--Christina: images are just placeholders, will be replaced by images from API and album covers-->
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="images/4.jpeg" alt="Me" width="600" height="200">
+  
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">Album</h1>
+  </div>
+  
+
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-papaya w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add Album</a>
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+
+
+</div>
+
+ <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-padding-large">Add an Album</a>
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+  </div>
+</div>
+
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div>
+      <h2>Description</h2>
+      <h4>This is an album of food pictures. (pretend these are images of food)</h4>
+    </div>
+  </div>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="images/header.png" style="width:100%">
+    <img src="images/1.jpeg" style="width:100%">
+    <img src="images/2.jpeg" style="width:100%">
+    <img src="images/3.jpeg" style="width:100%">
+    <img src="images/4.jpeg" style="width:100%">
+  </div>
+ 
+</div>
+
+</body>
+</html>

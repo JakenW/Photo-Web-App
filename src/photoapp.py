@@ -30,9 +30,13 @@ def search():
         #This line extracts the date from the form
         albumName = request.form["albname"]
         albumDesc = request.form["albdes"]
+        queryPhotoName = request.form["queryName"]
+        amountPhotoRequest= request.form["amountRequest"]
         
-        session["name"] = albumName     #This saves the session data so we can pass it to information
-        session["desc"] = albumDesc     #This saves the session data so we can pass it to information
+        session["name"] = albumName            #This saves the session data so we can pass it to information
+        session["desc"] = albumDesc            #This saves the session data so we can pass it to information
+        session["query"] = queryPhotoName      #This saves the session data so we can pass it to information
+        session["amount"] = amountPhotoRequest #This saves the session data so we can pass it to information
         
         return redirect(url_for("information"))
     
@@ -58,6 +62,13 @@ def information():
         #Assign the session date as a variable called date
         desc = session["desc"]
         
+    if "query" in session:
+        #Assign the session date as a variable called date
+        desc = session["query"]    
+        
+    if "amount" in session:
+        #Assign the session date as a variable called date
+        desc = session["amount"]
         '''
         Here would be code to create the directory locally.
         I have not yet done this.

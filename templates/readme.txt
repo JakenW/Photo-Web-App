@@ -6,4 +6,4 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 
 11/17/2022
 -Added two new index files. test.html, test2.html
--Added folder for placeholder images
+-Added folder for placeholder images to make test.html and test2.html function. 

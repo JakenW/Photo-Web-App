@@ -10,3 +10,4 @@ I added in the functionality which stores the album information received from th
 Additionally, I added the functionality which makes the local directory at the specified file path on the system.
 
 2nd Edit on 11/27/22:
+Added a template route for getting photos, within it containing a comment specifying what must be done within the route itself

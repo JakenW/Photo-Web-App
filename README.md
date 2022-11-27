@@ -10,5 +10,5 @@ Sample of API can be found in the PDF file in the repository named API test case
 
 Week 1: who is doing what?
 Grayson: API, File Paths 
-Jaken: Pages of Web App 
+Jaken: Database/Backend
 Christina: Pages of Web App 

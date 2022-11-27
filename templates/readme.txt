@@ -11,3 +11,7 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 -Added test3.html (changes: color, MOST UPDATED INDEX)
 -Added album directory: albums.html
 -Added a mock idea of what the album page will look like: albumpage.html
+
+11/27/2022:
+-Added a placeholder page which just tells the user that the album was successfully created (albcreatetest.html)
+-Added a placeholder form for getphotos (getphotos.html) to test functioanlity

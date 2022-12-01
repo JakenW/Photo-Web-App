@@ -16,3 +16,7 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 -Added a placeholder page which just tells the user that the album was successfully created (albcreatetest.html)
 -Added a placeholder form for getphotos (getphotos.html) to test functioanlity
 -Modified test3.html so that the navbar link for Get Photo now leads to the placeholder form page
+
+12/1/2022:
+-Added albumdirectoryver2.html 
+-Added navagation bars to getphotos.html and addalbum.html

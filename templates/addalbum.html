@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-
-<!-- Code for the Webpage/UI Found at https://www.w3docs.com/learn-html/html-form-templates.html and w3docs.com/tools/editor/5934 -->
+<!-- Code for the Webpage/UI Found at:
+ https://www.w3schools.com/w3css/w3css_templates.asp 
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_start_page&stacked=h 
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_photo3&stacked=h
+-->
 
 <!-- Having very limited HTML experience, creating this from scratch would have been near impossible. So I utilized an online template and cited where we found it at. -->
 
 <!-- If you would have prefered we build the entire website layout from scratch, I appologize. -->
 
-<html>
-  <head>
-    <title>Album Creation Form</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<style>
+<html lang="en">
+<head>
+<title>egami</title> 
+<link rel="egami icon" href="images/egamilogo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+@import url(w3.css);
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
       html, body {
       min-height: 100%;
       }
@@ -189,14 +203,27 @@
   </head>
   <body>
   
-	<!-- Navbar -->
-	<div class="w3-top">
-	  <div class="w3-bar w3-teal w3-card w3-left-align w3-large">
-		<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-		<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-		<a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add an Album</a>
-	  </div>
-	</div>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-papaya w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add Album</a>
+    <a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> 
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+
+
+</div>
+
+ <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-padding-large">Add an Album</a>
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
+    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+  </div>
+</div>
 	
 	<!-- spacing to make form look nicer -->
 	<br>
@@ -208,9 +235,7 @@
           <h1>Album Creation Form</h1>
         </div>
 		
-		<div class="item">
-			<h3>Click the calander icon to select a date!</h3>
-        </div>
+
 		
 		<div class="item">
           <p>Album Name:</p>

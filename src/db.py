@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Nov 20 18:43:22 2022
-
 @author: theja
 """
 
@@ -22,7 +21,8 @@ conn.execute('''CREATE TABLE PHOTO
          PDESC           TEXT    NOT NULL,
          WIDTH            INTEGER     NOT NULL,
          HEIGHT            INTEGER     NOT NULL,
-         FILESIZE            REAL     NOT NULL);''')
+         FILESIZE            REAL     NOT NULL,
+         PATH            TEXT    NOT NULL);''')
 
 conn.execute('''CREATE TABLE LOCATIONS
          (ID INTEGER PRIMARY KEY     AUTOINCREMENT,

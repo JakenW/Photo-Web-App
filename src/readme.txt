@@ -11,3 +11,6 @@ Additionally, I added the functionality which makes the local directory at the s
 
 2nd Edit on 11/27/22:
 Added a template route for getting photos, within it containing a comment specifying what must be done within the route itself
+
+12/1/22:
+An edit was made to db.py which adds an additional attribute to PHOTOS to store partial information about the file path alongside the image. This is used to help with display through flask (which is semi-tedious). 

@@ -20,3 +20,6 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 12/1/2022:
 -Added albumdirectoryver2.html 
 -Added navagation bars to getphotos.html and addalbum.html
+
+12/5/2022:
+-Added a temporary form for editing of photos called editPhotos.html

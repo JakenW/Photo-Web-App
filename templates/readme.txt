@@ -24,4 +24,4 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 12/5/2022:
 -Added a temporary form for editing of photos called editPhotos.html
 -Added test5.html. (currently most updated homepage)
--Updated getphotos.html
+-Updated getphotos.html, addalbum.html

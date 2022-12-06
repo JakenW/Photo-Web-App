@@ -30,15 +30,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, textarea, p { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
+    
       h1 {
       position: absolute;
       margin: 0;
@@ -203,26 +195,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </head>
   <body>
   
-<!-- Navbar -->
+<!-- NAV BAR -->
 <div class="w3-top">
-  <div class="w3-bar w3-papaya w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add Album</a>
-    <a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> 
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+<div class="w3-bar w3-sand w3-card" id="myNavbar">
+<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
-
+<!-- Right-sided navbar links -->
+<div class="w3-right w3-hide-small">
+<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
-
- <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-padding-large">Add an Album</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
-  </div>
+</div>
 </div>
 	
 	<!-- spacing to make form look nicer -->

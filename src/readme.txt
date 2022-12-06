@@ -14,3 +14,6 @@ Added a template route for getting photos, within it containing a comment specif
 
 12/1/22:
 An edit was made to db.py which adds an additional attribute to PHOTOS to store partial information about the file path alongside the image. This is used to help with display through flask (which is semi-tedious). 
+
+12/6/22:
+Uploaded a new version of photoapp.py which includes some functional routes for the pages alongside some routes which were used for testing (which will be removed prior to the submission of the project). Some pages are currently implemented and functional, but some still need to be implemented. Additionally, the code currently lacks comments (which I will add later explaining what specific pieces do).

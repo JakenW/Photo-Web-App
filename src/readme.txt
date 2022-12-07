@@ -17,3 +17,6 @@ An edit was made to db.py which adds an additional attribute to PHOTOS to store 
 
 12/6/22:
 Uploaded a new version of photoapp.py which includes some functional routes for the pages alongside some routes which were used for testing (which will be removed prior to the submission of the project). Some pages are currently implemented and functional, but some still need to be implemented. Additionally, the code currently lacks comments (which I will add later explaining what specific pieces do).
+
+12/7/22:
+Uploaded a new version of photoapp.py which now has the API implemented. Currently it has some strange issue with a photo being downloaded twice and saving over itself when it is the same photo. I will experiment with preventing this.

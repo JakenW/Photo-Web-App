@@ -9,7 +9,7 @@
 <html>
   <head>
   <title>egami</title> 
-<link rel="egami icon" href="images/egamilogo.png">
+<link rel="egami icon" href="{{url_for('static', filename='egamilogo.png')}}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -200,14 +200,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- NAV BAR -->
 <div class="w3-top">
 <div class="w3-bar w3-sand w3-card" id="myNavbar">
-<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
+<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
 <!-- Right-sided navbar links -->
 <div class="w3-right w3-hide-small">
-<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
-<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
-<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
-<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
+<a href="http://127.0.0.1:5000/albums" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
 </div>
 </div>
@@ -234,18 +234,27 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         </div>
 		
 		<div class="item">
+          <p>File Name:</p>
+          <div class="name-item">
+            <input type="text" name="nameofphoto" placeholder="Name" />
+          </div>
+        </div>
+		
+		<div class="item">
           <p>Number of Photos:</p>
           <div class="name-item">
-            <input type="text" name="amountRequest" placeholder="1" />
+            <input type="number" name="amountRequest" placeholder="1" min = "1" max = "10"/>
           </div>
         </div>
         
   <label for="albums">Choose an Album</label>
   <select name="albums" id="albums">
-    <option value="dogs">Dogs</option>
-    <option value="cats">Cats</option>
-    <option value="snakes">Snakes</option>
+	{% for row in data %}
+		<option value="{{row.ALBNAME}}">{{row.ALBNAME}}</option>
+	{%endfor%}
   </select>
+  
+	
 		
           <button type="submit" value = "submit" href="/">Submit</button>
         </div>

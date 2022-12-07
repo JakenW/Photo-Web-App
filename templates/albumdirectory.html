@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--Albums Page wip!-->
+
+<html lang="en">
+
+<head>
+
+<title>egami</title> 
+<link rel="egami icon" href="{{url_for('static', filename='egamilogo.png')}}">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+@import url(w3.css);
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container {
+  position: relative;
+  width: 30%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #7173A4;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+}
+
+.span{
+  background-color: #7173A4;
+}
+
+.editbtn {
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: white;
+	  background-color: #6BB9FF;
+      cursor: pointer;
+      }
+.editbtn:hover {
+      background: grey;
+}
+
+.delbtn {
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: white;
+	  background-color: #FF6B6B;
+      cursor: pointer;
+      }
+.delbtn:hover {
+      background: grey;
+}	  
+	  
+</style>
+
+<body>
+
+
+<!-- NAV BAR -->
+<div class="w3-top">
+<div class="w3-bar w3-sand w3-card" id="myNavbar">
+<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
+
+<!-- Right-sided navbar links -->
+<div class="w3-right w3-hide-small">
+<a href="http://127.0.0.1:5000/albums" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="http://127.0.0.1:5000/information" class="w3-bar-item w3-button">MANAGEMENT</a>
+</div>
+</div>
+</div>
+<!-- END OF NAV BAR -->
+<br>
+<br>
+
+<!-- FORM HEADER -->
+
+  <div class="testbox">
+  <form method = "post" action='{{url_for("editAlbum", aid=data.ID)}}'>
+  <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
+  <img class="w3-image" src="{{url_for('static', filename='3.jpeg')}}" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
+  <h2>ALBUM DIRECTORY</h2>
+  </div>
+  </div>
+  
+<!-- END OF FORM HEADER -->
+<br>
+<center>
+
+{% for row in data %}
+	<div class = "container">
+	<!-- ALBUM NAME -->
+	<h4><span style="background-color:#fdf5e6;font-weight:bold">Album Name: {{row.ALBNAME}}</span></h4>
+	<!-- END OF ALBUM NAME -->
+	<a href='{{url_for("albumspage", aid=row.ID)}}'><img src="{{url_for('static', filename='header.png')}}" alt="Avatar" class="image" style="width:100%" class="hover-shadow cursor">
+	<div class="middle">
+	<div class="text">{{row.ALBDESC}}</div>
+	</div>
+	</div>
+	<br>
+	<!-- buttons -->
+	<div>
+	<a href='{{url_for("editAlbum", aid=row.ID)}}' class = "editbtn">Edit</a> <a href='{{url_for("deleteAlbum", aid=row.ID)}}' class = "delbtn" onclick='return confirm("Are You Sure")'>Delete</a>
+	</div>
+	<!-- end of buttons -->
+	
+	<br>
+{%endfor%}
+</center>
+</body>
+</html>

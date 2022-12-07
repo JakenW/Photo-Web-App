@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
 <title>egami</title> 
-<link rel="egami icon" href="images/egamilogo.png">
+<link rel="egami icon" href="{{url_for('static', filename='egamilogo.png')}}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -195,14 +195,14 @@
 <!-- NAV BAR -->
 <div class="w3-top">
 <div class="w3-bar w3-sand w3-card" id="myNavbar">
-<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
+<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
 <!-- Right-sided navbar links -->
 <div class="w3-right w3-hide-small">
-<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
-<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
-<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
-<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
+<a href="http://127.0.0.1:5000/albums" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="http://127.0.0.1:5000/information" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
 </div>
 </div>
@@ -216,7 +216,7 @@
   <div class="testbox">
   <form method = "post" action='{{url_for("editAlbum", aid=data.ID)}}'>
   <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
-  <img class="w3-image" src="images/3.jpeg" alt="Me" width="1500" height="600">
+  <img class="w3-image" src="{{url_for('static', filename='3.jpeg')}}" alt="Me" width="1500" height="600">
   <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
   <h2>EDIT ALBUM</h2>
   </div>

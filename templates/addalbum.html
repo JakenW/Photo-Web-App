@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!-- Code for the Webpage/UI Found at:
- https://www.w3schools.com/w3css/w3css_templates.asp 
-https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_start_page&stacked=h 
-https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_photo3&stacked=h
--->
+
+<!-- Code for the Webpage/UI Found at https://www.w3docs.com/learn-html/html-form-templates.html and w3docs.com/tools/editor/5934 -->
 
 <!-- Having very limited HTML experience, creating this from scratch would have been near impossible. So I utilized an online template and cited where we found it at. -->
 
@@ -20,24 +17,22 @@ https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_photo3&sta
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<style>
+	@import url(w3.css);
+	body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+	.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+	.fa-anchor,.fa-coffee {font-size:200px}
 
-<style>
-@import url(w3.css);
-
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
       html, body {
       min-height: 100%;
       }
-    
-      h1 {
-      position: absolute;
+      div, form, input, select, textarea, p { 
+      padding: 0;
       margin: 0;
-      font-size: 38px;
-      color: #fff;
-      z-index: 2;
+      outline: none;
       }
+      
       .testbox {
       display: flex;
       justify-content: center;
@@ -49,8 +44,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       width: 100%;
       padding: 20px;
       border-radius: 6px;
-      background: #fff;
-      box-shadow: 0 0 25px 0 #009688; 
+      background: #F9F9F9; 
+      box-shadow: 0 0 25px 0 #7173A4; 
       }
       .banner {
       position: relative;
@@ -64,7 +59,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       }
       .banner::after {
       content: "";
-      background-color: #009688; 
+      background-color: #7173A4; 
       position: absolute;
       width: 100%;
       height: 100%;
@@ -91,12 +86,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       padding: 5px;
       }
       .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
-      color: #009688;
+      color: sand;
       }
       .item input:hover, .item select:hover, .item textarea:hover {
       border: 1px solid transparent;
-      box-shadow: 0 0 6px 0 #009688;
-      color: #009688;
+      box-shadow: 0 0 6px 0 #7173A4;
+      color: #7173A4;
       }
       .item {
       position: relative;
@@ -108,7 +103,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       .item i, input[type="date"]::-webkit-calendar-picker-indicator {
       position: absolute;
       font-size: 20px;
-      color: #a9a9a9;
+      color: #7173A4;
       }
       .item i {
       right: 2%;
@@ -143,7 +138,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       border: 2px solid #ccc;
       }
       input[type=radio]:checked + label:before, label.radio:hover:before {
-      border: 2px solid #009688;
+      border: 2px solid #7173A4;
       }
       label.radio:after {
       content: "";
@@ -152,7 +147,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       left: 5px;
       width: 8px;
       height: 4px;
-      border: 3px solid #009688;
+      border: 3px solid #7173A4;
       border-top: none;
       border-right: none;
       transform: rotate(-45deg);
@@ -170,13 +165,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       padding: 10px;
       border: none;
       border-radius: 5px; 
-      background: #009688;
+      background: #7173A4;
       font-size: 16px;
       color: #fff;
       cursor: pointer;
       }
       button:hover {
-      background: #02ccb9;
+      background: #CDAAF8;
       }
       @media (min-width: 568px) {
       .name-item, .city-item {
@@ -191,10 +186,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       width: calc(50% - 8px);
       }
       }
-    </style>
-  </head>
-  <body>
-  
+      
+
+</style>
+</head>
+ 
+<body>
 <!-- NAV BAR -->
 <div class="w3-top">
 <div class="w3-bar w3-sand w3-card" id="myNavbar">
@@ -209,18 +206,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 </div>
 </div>
-	
-	<!-- spacing to make form look nicer -->
-	<br>
-	<br>
-  
-    <div class="testbox">
-      <form action="#" method = "post">
-        <div class="banner">
-          <h1>Album Creation Form</h1>
-        </div>
-		
+<!-- END OF NAV BAR -->
 
+<br>
+<br>
+
+<!-- FORM HEADER -->
+
+  <div class="testbox">
+  <form method = "post" action='{{url_for("editAlbum", aid=data.ID)}}'>
+  <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
+  <img class="w3-image" src="images/3.jpeg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
+  <h2>ADD ALBUM</h2>
+  </div>
+  </div>
+  
+<!-- END OF FORM HEADER -->
+
+  <br>
 		
 		<div class="item">
           <p>Album Name:</p>

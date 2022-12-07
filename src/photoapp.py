@@ -7,6 +7,8 @@ from flask import Flask, redirect, url_for, render_template, request, session
 import sqlite3 as sql
 import os
 import shutil
+from google_images_search import GoogleImagesSearch
+import cv2
 
 #Creating the flask app
 app = Flask(__name__)
@@ -65,40 +67,112 @@ def getphotos():
         #This line extracts the date from the form
         queryPhotoName = request.form["queryName"]              #search term
         amountPhotoRequest= request.form["amountRequest"]       #number of photos
+        desiredName = request.form["nameofphoto"]               #name of photo
+        selectedAlbum = request.form["albums"]                  #chosen album
         
-        '''
-        before returning the html template, there are a few things to do:
-        1. Modify the search parameters to represent the term and number 
-        specified by the user. (This can be done based off the apicase.py
-        file on github by modifying dictionary values)
-        2. Search the api based on the newly created search parameters (
-        this can also be based on the apicase.py file.)
-        3. Inside the for loop for results from the api, the photo needs
-        to be downloaded locally and then meta-data about each
-        image must be tracked and placed within the database.
+        #obtain the album id so photos can be added to location table
+        con = sql.connect("photos.db")
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        cur.execute("select ID from ALBUM where ALBNAME=?", (selectedAlbum,))
+        result = cur.fetchone()
+        albumID = int(result[0])
         
-        Grayson: Work on 1 and 2 in this area as it relates with the API,
-        if you need help I (Jaken) can help you with it
+        #This is needed or there is an error on submission
+        #The plus 1 was added because for some strange reason the API always pulled 1 less image then asked for
+        amountPhotoRequest = int(amountPhotoRequest)
         
-        Once the API is pulling images based on the user input information,
-        I (Jaken) will add in the code for part 3 which will collect 
-        the meta-data and store it on the database 
-        '''
+        #setup api connection
+        gis = GoogleImagesSearch('AIzaSyCEUrQCpyHvV9crC6mOnXQWi3dFmwu_H2o', '409f2a1ba9a2a4dd4')
+
+        #defined search parameters (Taken from API site example and modified slightly)
+        _search_params = {
+            'q': '',
+            'num': 0,
+            'fileType': 'jpg|gif|png',
+            'rights': 'cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived',
+            'safe': 'active', ##
+            'imgType': 'photo' ##
+        }
         
-        #redirect(url_for("albcreatetest.html"))
-        #Should render a placeholder template which says photos properly downloaded or something
-        #The text placeholder will need to be replaced with an HTML file 
-        return render_template("placeholder")
+        #modify parameters based on user input
+        _search_params["q"] = queryPhotoName
+        _search_params["num"] = amountPhotoRequest
+        
+        #create path to folder for download
+        downloadPath = mainDir + "/" + selectedAlbum
+        
+        # search for images based on the search parameters
+        gis.search(search_params=_search_params, custom_image_name = desiredName)
+
+        for image in gis.results():
+            image.url  # image direct url
+            image.referrer_url  # image referrer url (source) 
+            
+            #Change this to your file path :D
+            image.download(downloadPath)  # download image
+                
+            print(image.path)       #This was to test it saved to the correct location on my pc
+                
+            orgFilePath = image.path
+            orgFilePath = orgFilePath.replace("\\", "/")
+            #print(orgFilePath)
+            
+            #get name the file is stored as (most helpful when multiple images downloaded)
+            splitPath = orgFilePath.split(downloadPath + "/")
+            oriName = splitPath[1]
+            
+            extRem = oriName.split(".")
+            orgFileName = extRem[0]
+            
+            curSize = os.path.getsize(orgFilePath) #bytes
+            curImage = cv2.imread(orgFilePath)
+            curHeight, curWidth = curImage.shape[:2]
+            
+            imagePathSplit = orgFilePath.split(origDir + "/")
+            curImagePath = imagePathSplit[1]
+            
+            defaultDesc = "This is a photo of " + queryPhotoName
+            
+            cur.execute("insert into PHOTO(PNAME, PDESC, WIDTH, HEIGHT, FILESIZE, PATH) values (?,?,?,?,?,?)", (orgFileName, defaultDesc, curWidth, curHeight, curSize, curImagePath))
+            con.commit()
+            
+            #get photo id so it can be added to locations table
+            #IMPORTANT
+            #I THINK THIS LINE IS CAUSING THE ISSUE WITH DISPLAYING THE SAME PHOTO
+            #THIS SHOULD BE BECAUSE THE PHOTOS HAVE THE SAME NAME DESPITE HAVING DIFFERENT PATHS
+            #snake.jpg, snake.JPG, snake.jpeg, and snake.png would all have the name of snake
+            #hypothetically selecting ID based on PATH should fix
+            cur.execute("select ID from PHOTO where PNAME=?", (orgFileName,))
+            cur.execute("select ID from PHOTO where PATH=?", (curImagePath,))
+            pIDresult = cur.fetchone()
+            curPhotoID = int(pIDresult[0])
+            
+            cur.execute("insert into LOCATIONS(A_ID, P_ID) values (?,?)", (albumID, curPhotoID))
+            con.commit()
+            
+
+        return redirect(url_for("home"))
     
     else:
-        #If the resuest is not a post, go to the original form
-        return render_template("getphotos.html")
+        con = sql.connect("photos.db")
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        cur.execute("select * from ALBUM")
+        albums = cur.fetchall()
+        
+        return render_template("getphotos.html", data = albums)
 
 #Route to test passing album info
 @app.route("/information")
 def information():
-        #return redirect(url_for("information.html"))
-        return render_template("information.html")
+    con = sql.connect("photos.db")
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from ALBUM")
+    albums = cur.fetchall()
+    
+    return render_template("albumdirectory.html", data = albums)
 
 #Route to test passing album info
 @app.route("/albums")
@@ -180,8 +254,6 @@ def albumspage(aid):
         photoList.append(curPhoto)
     
     return render_template("albumspage.html", albumName = albName, albumDescription = descAlb, data = photoList)
-
-
 
 '''
 Below are routes I used for testing stuff on my end
@@ -399,7 +471,9 @@ def deletePhoto(pid):
     modDir = dirList[0]
     photoPath = modDir + oldPhotoPath
     
-    os.remove(photoPath)
+    #I made a change here to add the if
+    if(os.path.exists(photoPath)):
+        os.remove(photoPath)
     
     return redirect(url_for("albumRUD"))
 

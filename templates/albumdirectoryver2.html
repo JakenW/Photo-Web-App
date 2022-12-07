@@ -200,72 +200,129 @@ img.hover-shadow {
 }
 
 .text {
-  background-color: teal;
+  background-color: #7173A4;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
 }
 }
+
+.span{
+  background-color: #7173A4;
+}
+
+.deletebtn {
+  background-color: #FF6B6B;
+}
+
+.editbtn {
+  background-color: #6BB9FF;
+}
+
+button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: grey;
+      }
 </style>
 
 <body>
-<!-- Header -->
-<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-<!--Christina: images are just placeholders, will be replaced by images from API and album covers-->
 
-<!-- Navbar -->
+
+<!-- NAV BAR -->
 <div class="w3-top">
-  <div class="w3-bar w3-papaya w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add Album</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+<div class="w3-bar w3-sand w3-card" id="myNavbar">
+<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
+<!-- Right-sided navbar links -->
+<div class="w3-right w3-hide-small">
+<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
+</div>
+</div>
+<!-- END OF NAV BAR -->
+<br>
 <br>
 
- <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-padding-large">Add an Album</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+<!-- FORM HEADER -->
+
+  <div class="testbox">
+  <form method = "post" action='{{url_for("editAlbum", aid=data.ID)}}'>
+  <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
+  <img class="w3-image" src="images/3.jpeg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
+  <h2>ALBUM DIRECTORY</h2>
   </div>
-</div>
-</header>
+  </div>
+  
+<!-- END OF FORM HEADER -->
 <br>
-<br>
-<br>
-<h2 style="text-align:center">Album Directory</h2>
-
-
-<div class="row">
+<center>
 <div class = "container">
+<!-- ALBUM NAME -->
+<h4><span style="background-color:#fdf5e6;font-weight:bold">Album Name: Cats</span></h4>
+<!-- END OF ALBUM NAME -->
 <img src="images/header.png" alt="Avatar" class="image" style="width:100%" class="hover-shadow cursor">
 <div class="middle">
 <div class="text">Album Description </div>
 </div>
 </div>
+<br>
+<!-- buttons -->
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<!-- end of buttons -->
 
-<div class="row">
+<br>
+
 <div class = "container">
+<!-- ALBUM NAME -->
+<h4><span style="background-color:#fdf5e6;font-weight:bold">Album Name: Dogs</span></h4>
+<!-- END OF ALBUM NAME -->
 <img src="images/1.jpeg" alt="Avatar" class="image" style="width:100%" class="hover-shadow cursor">
 <div class="middle">
-<div class="text">An album with pictures of cats. </div>
+<div class="text">An album with pictures of dogs. </div>
 </div>
 </div>
 
-<div class="row">
+<br>
+
+<!-- buttons -->
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<!-- end of buttons -->
+
+<br>
+
 <div class = "container">
+<!-- ALBUM NAME -->
+<h4><span style="background-color:#fdf5e6;font-weight:bold">Album Name: Snakes</span></h4>
+<!-- END OF ALBUM NAME -->
 <img src="images/2.jpeg" alt="Avatar" class="image" style="width:100%" class="hover-shadow cursor">
 <div class="middle">
-<div class="text">An album with pictures of cats. </div>
+<div class="text">An album with pictures of snakes. </div>
 </div>
 </div>
+<br>
+<!-- buttons -->
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<!-- end of buttons -->
 
-
-    
+<br>
+    </center>
 </body>
 </html>

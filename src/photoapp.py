@@ -52,7 +52,7 @@ def addalbum():
         os.mkdir(newDirPath)
         
         #This goes to a placeholder page, we should create one which lets them know it was successfully created
-        return render_template("albcreatetest.html")
+        return render_template("ac_success.html")
     
     else:
         #If the resuest is not a post, go to the original form
@@ -152,7 +152,8 @@ def getphotos():
             con.commit()
             
 
-        return redirect(url_for("home"))
+        #return redirect(url_for("home"))
+        return render_template("getphotos_success.html")
     
     else:
         con = sql.connect("photos.db")
@@ -183,7 +184,7 @@ def albums():
     cur.execute("select * from ALBUM")
     albums = cur.fetchall()
     
-    return render_template("albums.html", data = albums)
+    return render_template("albumdirectoryver2.html", data = albums)
 
 '''
 #Route to test passing album info
@@ -278,40 +279,42 @@ def editAlbum(aid):
         albname = request.form["albname"]
         albdesc = request.form["albdesc"]
         
-        #first check if the edited name is already a directory
-        #if so return to the main page
-        
-        os.chdir(mainDir)
-        for file in os.listdir():
-            if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".png"):
-                continue
-            if albname == file:
-                return redirect(url_for("home"))
-        
-        #change back to original directory if no file matches edited name
-        os.chdir(origDir)
-        
+        #if the the name in the form is the same as the old name,
+        #do not check if the directory already exists as they were not trying to change its name
         
         con = sql.connect("photos.db")
         cur = con.cursor()
         cur.execute("select ALBNAME from ALBUM where ID=?", (aid,))
         result = cur.fetchone()
+        oldAlbName = str(result[0])
         
-        '''
-        cur.execute("select ALBNAME from ALBUM where ID=?", (aid,))
-        result = cur.fetchone()
-        '''
+        #if they changed the name make sure directory does not already exist
+        if(oldAlbName != albname):
+            #first check if the edited name is already a directory
+            #if so return to the main page
+            os.chdir(mainDir)
+            for file in os.listdir():
+                if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".png") or file.endswith(".gif"):
+                    continue
+                if albname == file:
+                    os.chdir(origDir)
+                    return render_template("editalbum_unsuccess.html")
+                    #return redirect(url_for("home"))
+        
+        #change back to original directory if no file matches edited name
+        os.chdir(origDir)
+        
         cur.execute("update ALBUM set ALBNAME=?, ALBDESC=? where ID=?", (albname, albdesc, aid))
         con.commit()
         
         #Change name locally
         #Need to think about names already existing D:
-        oldAlbName = str(result[0])
         oldPath = os.path.join(mainDir, oldAlbName)
         newPath = os.path.join(mainDir, albname)
         os.rename(oldPath, newPath)
         
-        return redirect(url_for("albumRUD"))
+        #return redirect(url_for("albumRUD"))
+        return render_template("editalbum_success.html")
     
     con = sql.connect("photos.db")
     con.row_factory = sql.Row
@@ -333,7 +336,8 @@ def deleteAlbum(aid):
     DirPath = os.path.join(mainDir, albumName)
     shutil.rmtree(DirPath)
     
-    return redirect(url_for("albumRUD"))
+    #return redirect(url_for("albumRUD"))
+    return render_template("deletealbum_success.html")
 
 @app.route("/selectAlbum", methods=["POST", "GET"])
 def selectAlbum():
@@ -415,8 +419,14 @@ def editPhoto(pid):
         
         os.chdir(curDir)
         for file in os.listdir():
-            if photoname in file:
-                return redirect(url_for("home"))
+            #get just the name of current file in directory without extension
+            currentFileSplit = file.split(".")
+            currentFileName = currentFileSplit[0]
+            
+            if photoname == currentFileName:
+                os.chdir(origDir)
+                return render_template("editphoto_unsuccess.html")
+                #return redirect(url_for("home"))
         
         #change back to original directory if no file matches edited name
         os.chdir(origDir)
@@ -445,7 +455,8 @@ def editPhoto(pid):
         cur.execute("update PHOTO set PNAME=?, PDESC=?, PATH=? where ID=?", (photoname, photodesc, newPhotoPath, pid))
         con.commit()
         
-        return redirect(url_for("albumRUD"))
+        #return redirect(url_for("albumRUD"))
+        return render_template("editphoto_success.html")
     
     con = sql.connect("photos.db")
     con.row_factory = sql.Row
@@ -475,7 +486,8 @@ def deletePhoto(pid):
     if(os.path.exists(photoPath)):
         os.remove(photoPath)
     
-    return redirect(url_for("albumRUD"))
+    #return redirect(url_for("albumRUD"))
+    return render_template("deletephoto_success.html")
 
 
 #This drives the program by creating the instance of the Seivom Backend and Running the Flask App

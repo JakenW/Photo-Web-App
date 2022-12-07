@@ -1,140 +1,370 @@
 <!DOCTYPE html>
-<!-- Page for Album Page wip! -->
+
+<!-- Code for the Webpage/UI Found at https://www.w3docs.com/learn-html/html-form-templates.html and w3docs.com/tools/editor/5934 -->
+
+<!-- Having very limited HTML experience, creating this from scratch would have been near impossible. So I utilized an online template and cited where we found it at. -->
+
+<!-- If you would have prefered we build the entire website layout from scratch, I appologize. -->
 
 <html lang="en">
-
 <head>
 <title>egami</title> 
 <link rel="egami icon" href="images/egamilogo.png">
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<style>
+	@import url(w3.css);
+	body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+	.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+	.fa-anchor,.fa-coffee {font-size:200px}
 
-<style>
-@import url(w3.css);
-
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-
-<html>
-* {
-  box-sizing: border-box;
+      html, body {
+      min-height: 100%;
+      }
+      div, form, input, select, textarea, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      }
+      
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #F9F9F9; 
+      box-shadow: 0 0 25px 0 #7173A4; 
+      }
+      .banner {
+      position: relative;
+      height: 210px;
+      background-color: #fff;  
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: #7173A4; 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      input, select, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      input[type="date"] {
+      padding: 4px 5px;
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      textarea {
+      width: calc(100% - 12px);
+      padding: 5px;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+      color: sand;
+      }
+      .item input:hover, .item select:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #7173A4;
+      color: #7173A4;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      font-size: 20px;
+      color: #7173A4;
+      }
+      .item i {
+      right: 2%;
+      top: 30px;
+      z-index: 1;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=radio], input[type=checkbox]  {
+      display: none;
+      }
+      label.radio {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      cursor: pointer;
+      }
+      .question span {
+      margin-left: 30px;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      }
+      input[type=radio]:checked + label:before, label.radio:hover:before {
+      border: 2px solid #7173A4;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 5px;
+      width: 8px;
+      height: 4px;
+      border: 3px solid #7173A4;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after {
+      opacity: 1;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #7173A4;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #CDAAF8;
+      }
+      @media (min-width: 568px) {
+      .name-item, .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .name-item input, .city-item input {
+      width: calc(50% - 20px);
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+      }
+      
+.deletebtn {
+  background-color: #FF6B6B;
 }
 
-body {
-  margin: 0;
-  font-family: Arial;
+.editbtn {
+  background-color: #6BB9FF;
 }
 
-.header {
-  text-align: center;
-  padding: 32px;
-}
-
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
+button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: grey;
+      }
 </style>
+</head>
 <body>
-<!--Christina: images are just placeholders, will be replaced by images from API and album covers-->
-
-<!-- Header -->
-<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-  <img class="w3-image" src="images/4.jpeg" alt="Me" width="600" height="200">
-  
-  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
-    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">Album</h1>
-  </div>
-  
-
-
-<!-- Navbar -->
+<!-- NAV BAR -->
 <div class="w3-top">
-  <div class="w3-bar w3-papaya w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add Album</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+<div class="w3-bar w3-sand w3-card" id="myNavbar">
+<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
-
+<!-- Right-sided navbar links -->
+<div class="w3-right w3-hide-small">
+<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
+<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
+</div>
+</div>
+<!-- END OF NAV BAR -->
+<br>
+<br>
 
- <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Albums</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-padding-large">Add an Album</a>
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Get Photo</a> <!-- leads to nowhere -->
-    <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Management</a> <!-- leads to nowhere -->
+<!-- FORM HEADER -->
+
+  <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
+  <img class="w3-image" src="images/3.jpeg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
+  <h2>ALBUM PAGE</h2> <!-- Change to name of album -->
   </div>
-</div>
-
-</header>
-
+  </div>
+  
+<!-- END OF FORM HEADER -->
+<br>
+<center>
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div>
-      <h2>Description</h2>
-      <h4>This is an album of food pictures. (pretend these are images of food)</h4>
+      <h1><u>Description</u></h1>
+      <h4 class="w3-padding-32">This is the description for the album.</h4>
     </div>
   </div>
 </div>
-
 <!-- Photo Grid -->
-<div class="row"> 
-  <div class="column">
-    <img src="images/header.png" style="width:100%">
-    <img src="images/1.jpeg" style="width:100%">
-    <img src="images/2.jpeg" style="width:100%">
-    <img src="images/3.jpeg" style="width:100%">
-    <img src="images/4.jpeg" style="width:100%">
-  </div>
- 
+<div class="w3-row-padding" style="margin-bottom:128px">
+  <div class="w3-half">
+    <img src="images/1.jpeg" style="width:75%"> 
+    
+<!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/2.jpeg" style="width:75%">
+<!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/3.jpeg" style="width:75%">
+<!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/4.jpeg" style="width:75%">
+<!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/5.jpeg" style="width:75%">
+<!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
 </div>
 
+<!-- SECOND HALF OF PAGE -->
+
+  <div class="w3-half">
+    <img src="images/1.jpeg" style="width:75%">
+    <!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/2.jpeg" style="width:75%">
+    
+    <!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/3.jpeg" style="width:75%">
+    
+    <!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/4.jpeg" style="width:75%">
+    
+    <!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+    <img src="images/5.jpeg" style="width:75%">
+    
+    <!-- buttons -->
+<br>
+<br>
+<div>
+<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
+</div>
+<br>
+<!-- end of buttons -->
+
+
+  </div>
+</div>
+</div>
+</center>
 </body>
 </html>

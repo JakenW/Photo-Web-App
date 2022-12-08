@@ -25,3 +25,6 @@ Additionally, the colors and whatnot can also be changed if we do not like them.
 -Added a temporary form for editing of photos called editPhotos.html
 -Added test5.html. (currently most updated homepage)
 -Updated getphotos.html, addalbum.html
+
+12/8/2022:
+12:56 AM - updates to 16 html templates to have information from the database given to them and displayed by them dynamically

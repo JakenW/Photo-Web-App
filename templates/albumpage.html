@@ -2,14 +2,10 @@
 
 <!-- Code for the Webpage/UI Found at https://www.w3docs.com/learn-html/html-form-templates.html and w3docs.com/tools/editor/5934 -->
 
-<!-- Having very limited HTML experience, creating this from scratch would have been near impossible. So I utilized an online template and cited where we found it at. -->
-
-<!-- If you would have prefered we build the entire website layout from scratch, I appologize. -->
-
 <html lang="en">
 <head>
 <title>egami</title> 
-<link rel="egami icon" href="images/egamilogo.png">
+<link rel="egami icon" href="{{url_for('static', filename='egamilogo.png')}}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -187,53 +183,78 @@
       }
       }
       
-.deletebtn {
-  background-color: #FF6B6B;
-}
-
 .editbtn {
-  background-color: #6BB9FF;
-}
-
-button {
-      width: 150px;
+      width: 300px;
       padding: 10px;
       border: none;
       border-radius: 5px; 
       font-size: 16px;
-      color: #fff;
+      color: white;
+	  background-color: #6BB9FF;
       cursor: pointer;
       }
-      button:hover {
+.editbtn:hover {
       background: grey;
+}
+
+.delbtn {
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: white;
+	  background-color: #FF6B6B;
+      cursor: pointer;
       }
+.delbtn:hover {
+      background: grey;
+}
+
+.covbtn {
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      font-size: 16px;
+      color: white;
+	  background-color: #00A36C;
+      cursor: pointer;
+      }
+.covbtn:hover {
+      background: grey;
+}
+
+h3 span {background-color: #fdf5e6;}
+h4 span {background-color: #fdf5e6;}
+
 </style>
 </head>
 <body>
 <!-- NAV BAR -->
 <div class="w3-top">
 <div class="w3-bar w3-sand w3-card" id="myNavbar">
-<a href="#home" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
+<a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-wide w3-white">HOME</a>
 
 <!-- Right-sided navbar links -->
 <div class="w3-right w3-hide-small">
-<a href="#about" class="w3-bar-item w3-button">ALBUMS</a>
-<a href="#about" class="w3-bar-item w3-button">ADD ALBUM</a>
-<a href="#about" class="w3-bar-item w3-button">GET PHOTO</a>
-<a href="#about" class="w3-bar-item w3-button">MANAGEMENT</a>
+<a href="http://127.0.0.1:5000/albums" class="w3-bar-item w3-button">ALBUMS</a>
+<a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button">ADD ALBUM</a>
+<a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button">GET PHOTO</a>
 </div>
 </div>
 </div>
 <!-- END OF NAV BAR -->
+
 <br>
 <br>
 
 <!-- FORM HEADER -->
 
   <div class="w3-display-container w3-content w3-center"style="max-width:1000px">
-  <img class="w3-image" src="images/3.jpeg" alt="Me" width="1500" height="600">
+  <img class="w3-image" src="{{url_for('static', filename='3.jpeg')}}" alt="Me" width="1500" height="600">
   <div class="w3-display-middle w3-border w3-wide w3-text-light-grey w3-center">
-  <h2>ALBUM PAGE</h2> <!-- Change to name of album -->
+  <h2>{{albumName}}</h2>
   </div>
   </div>
   
@@ -245,126 +266,31 @@ button {
   <div class="w3-content">
     <div>
       <h1><u>Description</u></h1>
-      <h4 class="w3-padding-32">This is the description for the album.</h4>
+      <h4 class="w3-padding-32">{{albumDescription}}</h4>
     </div>
   </div>
 </div>
-<!-- Photo Grid -->
-<div class="w3-row-padding" style="margin-bottom:128px">
-  <div class="w3-half">
-    <img src="images/1.jpeg" style="width:75%"> 
-    
-<!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
 
-    <img src="images/2.jpeg" style="width:75%">
-<!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/3.jpeg" style="width:75%">
-<!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/4.jpeg" style="width:75%">
-<!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/5.jpeg" style="width:75%">
-<!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-</div>
-
-<!-- SECOND HALF OF PAGE -->
-
-  <div class="w3-half">
-    <img src="images/1.jpeg" style="width:75%">
-    <!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/2.jpeg" style="width:75%">
-    
-    <!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/3.jpeg" style="width:75%">
-    
-    <!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/4.jpeg" style="width:75%">
-    
-    <!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
-
-    <img src="images/5.jpeg" style="width:75%">
-    
-    <!-- buttons -->
-<br>
-<br>
-<div>
-<button class="editbtn">Edit</button> <button class="deletebtn">Delete</button> 
-</div>
-<br>
-<!-- end of buttons -->
+{% for row in data %}
+	<div class = "container">
+	<img src="{{row.PATH}}" alt="Me" style="width:50%; height:50%">
+	<u><h3><span>{{row.PNAME}}</span></h3></u>
+	<h4><span>{{row.PDESC}}</span></h4>
+	<h4><span>Width: {{row.WIDTH}} Pixels, Height: {{row.HEIGHT}} Pixels, File Size: {{row.FILESIZE}} Bytes</span></h4>
+    </div>
+	<!-- buttons -->
+	<br>
+	<br>
+	<div>
+	<a href='{{url_for("editPhoto", pid=row.ID)}}' class = "editbtn">Edit</a> <a href='{{url_for("assignPhoto", pid=row.ID)}}' class = "covbtn">Set as Album Cover</a> <a href='{{url_for("deletePhoto", pid=row.ID)}}' class = "delbtn" onclick='return confirm("Are You Sure")'>Delete</a>
+	</div>
+	<br>
+	<!-- end of buttons -->
+	
+	<br>
+{%endfor%}
 
 
-  </div>
-</div>
-</div>
 </center>
 </body>
 </html>

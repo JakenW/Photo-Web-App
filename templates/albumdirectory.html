@@ -254,7 +254,6 @@ img.hover-shadow {
 <a href="http://127.0.0.1:5000/albums" class="w3-bar-item w3-button">ALBUMS</a>
 <a href="http://127.0.0.1:5000/addalbum" class="w3-bar-item w3-button">ADD ALBUM</a>
 <a href="http://127.0.0.1:5000/getphotos" class="w3-bar-item w3-button">GET PHOTO</a>
-<a href="http://127.0.0.1:5000/information" class="w3-bar-item w3-button">MANAGEMENT</a>
 </div>
 </div>
 </div>
@@ -282,7 +281,7 @@ img.hover-shadow {
 	<!-- ALBUM NAME -->
 	<h4><span style="background-color:#fdf5e6;font-weight:bold">Album Name: {{row.ALBNAME}}</span></h4>
 	<!-- END OF ALBUM NAME -->
-	<a href='{{url_for("albumspage", aid=row.ID)}}'><img src="{{url_for('static', filename='header.png')}}" alt="Avatar" class="image" style="width:100%" class="hover-shadow cursor">
+	<a href='{{url_for("albumspage", aid=row.ID)}}'><img src="{{row.ALBIMG}}" alt="Avatar" class="image" style="width:75%" class="hover-shadow cursor">
 	<div class="middle">
 	<div class="text">{{row.ALBDESC}}</div>
 	</div>

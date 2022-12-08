@@ -13,7 +13,8 @@ print("Databased opened")
 conn.execute('''CREATE TABLE ALBUM
          (ID INTEGER PRIMARY KEY     AUTOINCREMENT,
          ALBNAME           TEXT    NOT NULL,
-         ALBDESC           TEXT    NOT NULL);''')
+         ALBDESC           TEXT    NOT NULL,
+         ALBIMG            TEXT    NOT NULL DEFAULT "static/1.jpeg" );''')
 
 conn.execute('''CREATE TABLE PHOTO
          (ID INTEGER PRIMARY KEY     AUTOINCREMENT,

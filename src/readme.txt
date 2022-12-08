@@ -20,5 +20,7 @@ Uploaded a new version of photoapp.py which includes some functional routes for 
 
 12/7/22:
 Uploaded a new version of photoapp.py which now has the API implemented. Currently it has some strange issue with a photo being downloaded twice and saving over itself when it is the same photo. I will experiment with preventing this.
-
 5:05 PM: Uploaded a new version which has better logic for editing of photos or albums.
+
+12/8/22:
+12:53 AM - Final working version of photoapp.py and db.py uploaded.
